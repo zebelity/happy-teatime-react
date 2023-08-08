@@ -1,0 +1,12 @@
+.menuItems-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Add media query for smaller screens */
+@media (max-width: 768px) {
+  .menuItems-section {
+    justify-content: center;
+  }
+}
