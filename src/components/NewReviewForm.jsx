@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './NewReviewForm.css'
 
 export default function NewReviewForm({ onAdd, menuItemId }) {
 
@@ -20,21 +21,27 @@ export default function NewReviewForm({ onAdd, menuItemId }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea value={content} onChange={handleContent}></textarea>
-      <select value={score} onChange={handleScore}>
-        <option value="10">10</option>
-        <option value="9">9</option>
-        <option value="8">8</option>
-        <option value="7">7</option>
-        <option value="6">6</option>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-      </select>
-      <button>Add Review</button>
+    <form className="new-review-form" onSubmit={handleSubmit}>
+      <textarea 
+        className="review-content-input" 
+        value={content} 
+        onChange={handleContent}>
+      </textarea>
+      <div className="score-container">
+        <select className="score-select" value={score} onChange={handleScore}>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+        </select>
+      </div>  
+      <button className="add-review-btn">Add Review</button>
     </form>
   )
 }

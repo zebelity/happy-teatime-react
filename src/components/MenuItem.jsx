@@ -3,16 +3,17 @@ import { useState } from "react";
 import * as BubbleTeaApi from "../utils/bubble_tea_api"
 import "./MenuItem.css"
 import MenuItemDetail from "./MenuItemDetail";
+import { Route, Routes, Link, useParams } from 'react-router-dom';
 
 export default function MenuItem({ menuItem }) {
 
   const { title, brand, img_url } = menuItem;
 
   const [showDetail, setShowDetail] = useState(false);
-  //const totalScore = reviews.reduce((sum, review) => sum + review.score, 0);
+
 
   const handleItemClick = () => {
-    setShowDetail(!showDetail);
+    window.location = `/menuItems/${menuItem._id}`
   };
   
   return (
@@ -20,8 +21,7 @@ export default function MenuItem({ menuItem }) {
       <div className="content">
         <div className="top">
           <h3>Brand: {brand.name}</h3>
-          <p>Score</p>
-          {/* <p>Total Score: {totalScore}</p> */}
+
         </div>
         <div className="pic-box">
           <img onClick={handleItemClick} src={img_url} alt={title} />
