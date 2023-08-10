@@ -4,8 +4,8 @@
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-  width: 50%;
+  margin-bottom: 20px;
+  width: 80%;
   display: grid;
 }
 
@@ -15,30 +15,56 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .score-container {
   display: flex;
   align-items: center;
-}
-
-.score-label {
-  margin-right: 10px;
-  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .score-select {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 5px;
+  padding: 8px 12px;
   font-size: 14px;
+  font-family: 'Kaisei Opti', serif;
+  font-weight: 900;
+  margin-left: 10px;
+  background-color: #fff;
+  color: #333;
+  appearance: none;
+  cursor: pointer;
+}
+.score-select:focus {
+  outline: none;
+  border-color: #FF6B6B;
+}
+
+.score-select option {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style for the arrow icon in the select */
+.score-select::after {
+  content: "\25BC";
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.score-select option:hover {
+  background-color: #FFC600;
+  color: #161212;
 }
 
 .add-review-btn {
   background-image: linear-gradient(to bottom, #FFE985, #FA742B);
   color: #161212;
+  font-family: 'Kaisei Opti', serif;
+  font-weight: 900;
   border: none;
   border-radius: 5px;
   padding: 8px 15px;

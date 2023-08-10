@@ -31,7 +31,7 @@ export default function Review({ menuItemId, review, onDelete, onUpdate, user })
   }
 
   const editSection = (
-    <section>
+    <section className="edit-section">
       <textarea onChange={handleContent} onDoubleClick={handleCancel} value={content}></textarea>
       <button onClick={handleSave} className="save-btn" >Save</button>
     </section>
@@ -43,12 +43,15 @@ export default function Review({ menuItemId, review, onDelete, onUpdate, user })
 
   return (
     <li className="review-item">
+      <h4>Comment</h4>
       <article className="review-content">
         {isEditing ? editSection : contentSection}
       </article>
-     
-      <p className="review-score">Score:{review.score}</p>
-      <p>Post by: {review.userId.username}</p>
+      <div className="wrap-footer">
+        <p className="review-score">Score:{review.score}</p>
+        <p className="post">Post by: {review.userId.username}</p>
+      </div>
+      
       { user && user.id === review.userId._id && (
         <button className="delete-btn" onClick={() => onDelete(menuItemId, review._id)} >␡</button>
       )}

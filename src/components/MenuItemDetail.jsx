@@ -19,7 +19,7 @@ export default function MenuItemDetail({ user }) {
           setMenuItem(res.data)
           setReviews(res.data.reviews)
         })
-    }, 1000)
+    }, 100)
   }, [])
 
   async function addReview(review) {
@@ -60,18 +60,21 @@ export default function MenuItemDetail({ user }) {
   const totalScore = calculateAverageRating(reviews);
 
   return menuItem ? (
-    <div className="menuItem-detail">
-      <div className="top-content">
-        <h2>{menuItem.title}</h2>
-        <p>Total Score: {totalScore}</p>
+    <div className="detail-section">
+      <div className="content-detail">
+        <div className="top-content">
+          <h2>{menuItem.title}</h2>
+        </div>
+        <div className="pic-box">
+          <img src={menuItem.img_url} alt={menuItem.title} />
+          <p>Score {totalScore}</p>
+        </div>
+        <div className="bottom-content">
+          <h3>{menuItem.detail}</h3>
+          <h4> ⚡️ Energy: {menuItem.calories} KJ</h4>
       </div>
-      <div className="pic-box">
-        <img src={menuItem.img_url} alt={menuItem.title} />
       </div>
-      <div className="detail-content">
-        <h3>{menuItem.detail}</h3>
-        <h4>Energy: {menuItem.calories} KJ</h4>
-      </div>
+      
       <div className="review-section">
         <h3>Reviews</h3>
         <NewReviewForm 

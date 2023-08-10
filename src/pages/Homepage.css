@@ -5,7 +5,10 @@
 }
 
 h2 {
-  color: azure;
+  font-family: 'Rubik 80s Fade', cursive;
+  font-size: 40px;
+  color: #EA5455;
+  text-align: center;
 }
 
 /* Add media query for smaller screens */

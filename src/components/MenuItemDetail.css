@@ -1,7 +1,5 @@
-.menuItem-detail {
+.detail-section {
   max-width: 800px;
-  border: 1px solid #ccc;
-  background-color: #c68383;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -9,52 +7,78 @@
   margin-top: 50px;
 }
 
+.content-detail {
+  background-image: linear-gradient(to bottom, #FFF886, #F072B6);
+  border-radius: 10px;
+}
+
 .top-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
   background-color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.top-content h2 {
+.top-content > h2 {
   color: black;
+  align-items: center;
 }
 
 .pic-box {
   text-align: center;
   position: relative;
   margin-top: 20px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
 }
 
 .pic-box img {
   max-width: 300px;
   width: 100%; 
-  height: auto; 
-
 }
 
-.detail-content {
+.pic-box > p {
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  background-color: black;
+  font-family: 'Bungee Spice', cursive;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 1px 3px 4px rgba(236, 232, 232, 0.8);
+  transition: background-color 0.3s;
+}
+
+.bottom-content {
   text-align: start;
+  font-family: 'Kaisei Opti', serif;
+  font-weight: 900;
   padding: 15px;
   margin-top: 10px;
   background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .review-section {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center horizontally */
+  align-items: center;
   padding: 15px;
-  background-color: #c68383;
+  background-image: linear-gradient(to bottom, #F97794, #623AA2);
   margin-top: 20px;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.review-section > h3 {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 24px;
+}
+
 .review-container {
+  width: 80%;
   border-radius: 5px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   list-style: none;

@@ -13,18 +13,19 @@ export default function MenuItem({ menuItem }) {
     token ? window.location = `/menuItems/${menuItem._id}` :
     window.location = `/login`
   };
-  
+
   return (
     <div className="menuItem-wrapper">
-      <div className="content">
-        <div className="top">
-          <h3>Brand: {brand.name}</h3>
-        </div>
-        <div className="pic-box">
-          <img onClick={handleItemClick} src={img_url} alt={title} />
-        </div>
+      <div className="content" onClick={handleItemClick}>
         <h3>{title}</h3>
+        <div className="pic-box">
+          <img  src={img_url} alt={title} />
+        </div>
       </div>
+      <footer>
+        <h4>{brand.name}</h4>
+        <h4>Lover</h4>
+      </footer>
       <div className="body-detail" >
         {showDetail && <MenuItemDetail menuItem={menuItem} />}
       </div>

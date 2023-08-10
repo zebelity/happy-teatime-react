@@ -8,7 +8,7 @@ Welcome to Happy TeaTime, a web application for exploring and reviewing differen
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [License](#license)
+- [Future Enhancements](#Future-Enhancements)
 
 ## Introduction
 

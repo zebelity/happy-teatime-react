@@ -36,14 +36,13 @@ export default function LoginPage({ onLogin }) {
 
   return (
     <section className="login-page">
-      <h1>Login</h1>
+      <h2>Login</h2>
 
         {error && <p className="error-message">{error}</p>}
       
       <form className="login-form" onSubmit={handleSubmit} action="">
         <label htmlFor="email">Email</label>
         <input onChange={handleChange} type="text" name="email" id="email"/>
-
         <label htmlFor="password">Password</label>
         <input onChange={handleChange} type="password" name="password" id="password"/>
       
