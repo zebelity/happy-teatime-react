@@ -3,6 +3,7 @@ export function getUser() {
   if (token) {
     const user = getPayload(token)
     
+    user._id = user.id // to match MongoDB
     user.username = getUsername()
 
     return user

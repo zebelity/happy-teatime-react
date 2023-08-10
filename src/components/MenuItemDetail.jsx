@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import NewReviewForm from "./NewReviewForm";
 import Review from "./Review";
 import "./MenuItemDetail.css"
 import * as BubbleTeaApi from "../utils/bubble_tea_api"
-import { useParams } from 'react-router-dom';
 
 export default function MenuItemDetail({ user }) {
 
   const {id} = useParams()
-  console.log({id})
 
   const [menuItem, setMenuItem] = useState()
   const [reviews, setReviews] = useState([])
@@ -19,7 +18,6 @@ export default function MenuItemDetail({ user }) {
         .then(res => {
           setMenuItem(res.data)
           setReviews(res.data.reviews)
-          console.log(res.data.reviews)
         })
     }, 1000)
   }, [])
@@ -27,10 +25,9 @@ export default function MenuItemDetail({ user }) {
   async function addReview(review) {
     try {
       const res = await BubbleTeaApi.createReview(id, review)
-      console.log({res})
       const newReview = res.data;
-      console.log({1:newReview})
-
+      console.log({newReview})
+      newReview.userId = user
       setReviews([ newReview, ...reviews ])
     } catch(error) {
       console.error("Error adding review:", error);
@@ -49,9 +46,9 @@ export default function MenuItemDetail({ user }) {
   }
 
   function updateReview(newReview){
-    //console.log(newReview)
+    newReview.userId = user
     setReviews(reviews.map(review => 
-      review._id === newReview._id ? newReview : review))
+    review._id === newReview._id ? newReview : review))
   }
 
   function calculateAverageRating(reviews) {
@@ -62,7 +59,6 @@ export default function MenuItemDetail({ user }) {
   
   const totalScore = calculateAverageRating(reviews);
 
-
   return menuItem ? (
     <div className="menuItem-detail">
       <div className="top-content">
@@ -72,7 +68,6 @@ export default function MenuItemDetail({ user }) {
       <div className="pic-box">
         <img src={menuItem.img_url} alt={menuItem.title} />
       </div>
-      
       <div className="detail-content">
         <h3>{menuItem.detail}</h3>
         <h4>Energy: {menuItem.calories} KJ</h4>
@@ -82,8 +77,6 @@ export default function MenuItemDetail({ user }) {
         <NewReviewForm 
           onAdd={addReview}
           menuItemId={id}/>
-        {/* Add a component for displaying reviews */}
-        {/* Add a form for adding a new review */}
 
         <ul className="review-container">
           {reviews.map((review) => 

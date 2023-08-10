@@ -8,7 +8,9 @@ export default function Review({ menuItemId, review, onDelete, onUpdate, user })
   const [content, setContent] = useState(review.content)
 
   function handleEdit() {
-    setIsEditing(true)
+    if (user && user.id === review.userId._id) {
+      setIsEditing(true)
+    }
   }
 
   function handleCancel() {
@@ -22,15 +24,11 @@ export default function Review({ menuItemId, review, onDelete, onUpdate, user })
   function handleSave(e) {
     BubbleTeaApi.updateReview({_id: review._id, content, score: review.score})
       .then(res => {
-        
         const newReview = res.data;
-        console.log({2:newReview})
         onUpdate(newReview)
         setIsEditing(false)
       })
   }
-
-
 
   const editSection = (
     <section>
@@ -48,9 +46,12 @@ export default function Review({ menuItemId, review, onDelete, onUpdate, user })
       <article className="review-content">
         {isEditing ? editSection : contentSection}
       </article>
+     
       <p className="review-score">Score:{review.score}</p>
-      <p>Post by: {user.username}</p>
-      <button className="delete-btn" onClick={() => onDelete(menuItemId, review._id)} >␡</button>
+      <p>Post by: {review.userId.username}</p>
+      { user && user.id === review.userId._id && (
+        <button className="delete-btn" onClick={() => onDelete(menuItemId, review._id)} >␡</button>
+      )}
     </li>
   )
 }

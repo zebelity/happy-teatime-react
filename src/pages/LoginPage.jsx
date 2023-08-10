@@ -2,7 +2,6 @@ import axios from "axios"
 import { useState } from "react"
 import "./LoginPage.css"
 
-
 export default function LoginPage({ onLogin }) {
 
   const [formData, setFormData] = useState({
@@ -13,7 +12,6 @@ export default function LoginPage({ onLogin }) {
   const [error, setError] = useState('')
 
   function handleChange(e) {
-    //console.log(e.target.name) to know which one we work on and use [] cause it's dynamic
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
@@ -30,10 +28,10 @@ export default function LoginPage({ onLogin }) {
         
         onLogin(user)
       })
-    .catch(err => {
-      console.log(err.response.data)
-      setError(err.response.data.message)
-    })
+      .catch(err => {
+        console.log(err.response.data)
+        setError(err.response.data.message)
+      })
   }
 
   return (

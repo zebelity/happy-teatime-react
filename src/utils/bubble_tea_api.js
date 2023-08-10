@@ -20,9 +20,7 @@ export function deleteReview(id, reviewId) {
 } 
 
 export function updateReview(review) {
-  // console.log(review)
-  // console.log(review._id)
-  // console.log(review.content)
+
   const body = {content: review.content}
 
   return axios.put(`/api/menuItems/${review.menuItemId}/reviews/${review._id}`, body, headers)
