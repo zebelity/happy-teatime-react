@@ -1,7 +1,11 @@
 export function getUser() {
   const token = getToken()
   if (token) {
-    return getPayload(token)
+    const user = getPayload(token)
+    
+    user.username = getUsername()
+
+    return user
   } else {
     return null
   }
@@ -20,6 +24,11 @@ export function getToken() {
     return null
   }
   return token
+}
+
+function getUsername () {
+  const username = localStorage.getItem('username')
+  return username
 }
 
 function getPayload(token) {

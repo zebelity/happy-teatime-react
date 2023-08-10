@@ -1,3 +1,59 @@
+.menuItem-detail {
+  max-width: 800px;
+  border: 1px solid #ccc;
+  background-color: #c68383;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.top-content h2 {
+  color: black;
+}
+
+.pic-box {
+  text-align: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.pic-box img {
+  max-width: 300px;
+  width: 100%; 
+  height: auto; 
+
+}
+
+.detail-content {
+  text-align: start;
+  padding: 15px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.review-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  padding: 15px;
+  background-color: #c68383;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .review-container {
   border-radius: 5px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
@@ -5,3 +61,5 @@
   padding: 0;
   margin: 0;
 }
+
+

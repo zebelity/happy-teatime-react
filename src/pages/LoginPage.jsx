@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import "./LoginPage.css"
 
 
 export default function LoginPage({ onLogin }) {
@@ -21,13 +22,13 @@ export default function LoginPage({ onLogin }) {
     console.log(formData)
     axios.post('/api/login', formData)
       .then(res => {
-        let token = res.data
-        console.log(token)
+        const { token, user } = res.data
+    
         //store it in local storage
-        localStorage.setItem
-        ("token", token)
+        localStorage.setItem("token", token)
+        localStorage.setItem('username', user.username)
         
-        onLogin(formData)
+        onLogin(user)
       })
     .catch(err => {
       console.log(err.response.data)
@@ -39,9 +40,9 @@ export default function LoginPage({ onLogin }) {
     <section className="login-page">
       <h1>Login</h1>
 
-        {error && <p>{error}</p>}
-
-      <form onSubmit={handleSubmit} action="">
+        {error && <p className="error-message">{error}</p>}
+      
+      <form className="login-form" onSubmit={handleSubmit} action="">
         <label htmlFor="email">Email</label>
         <input onChange={handleChange} type="text" name="email" id="email"/>
 

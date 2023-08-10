@@ -28,6 +28,7 @@ export default function NewReviewForm({ onAdd, menuItemId }) {
         onChange={handleContent}>
       </textarea>
       <div className="score-container">
+        <label htmlFor="score">Score : </label>
         <select className="score-select" value={score} onChange={handleScore}>
           <option value="10">10</option>
           <option value="9">9</option>

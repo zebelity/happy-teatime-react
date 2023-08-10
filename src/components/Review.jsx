@@ -2,7 +2,7 @@ import { useState } from "react"
 import * as BubbleTeaApi from "../utils/bubble_tea_api"
 import './Review.css'
 
-export default function Review({ menuItemId, review, onDelete, onUpdate }) {
+export default function Review({ menuItemId, review, onDelete, onUpdate, user }) {
 
   const [isEditing, setIsEditing] = useState(false)
   const [content, setContent] = useState(review.content)
@@ -24,7 +24,7 @@ export default function Review({ menuItemId, review, onDelete, onUpdate }) {
       .then(res => {
         
         const newReview = res.data;
-        console.log(newReview)
+        console.log({2:newReview})
         onUpdate(newReview)
         setIsEditing(false)
       })
@@ -49,6 +49,7 @@ export default function Review({ menuItemId, review, onDelete, onUpdate }) {
         {isEditing ? editSection : contentSection}
       </article>
       <p className="review-score">Score:{review.score}</p>
+      <p>Post by: {user.username}</p>
       <button className="delete-btn" onClick={() => onDelete(menuItemId, review._id)} >␡</button>
     </li>
   )

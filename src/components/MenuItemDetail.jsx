@@ -3,16 +3,15 @@ import NewReviewForm from "./NewReviewForm";
 import Review from "./Review";
 import "./MenuItemDetail.css"
 import * as BubbleTeaApi from "../utils/bubble_tea_api"
-import { Route, Routes, Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-export default function MenuItemDetail() {
+export default function MenuItemDetail({ user }) {
 
   const {id} = useParams()
   console.log({id})
 
   const [menuItem, setMenuItem] = useState()
   const [reviews, setReviews] = useState([])
-  // const { _id, detail } = menuItem;
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,17 +19,24 @@ export default function MenuItemDetail() {
         .then(res => {
           setMenuItem(res.data)
           setReviews(res.data.reviews)
+          console.log(res.data.reviews)
         })
     }, 1000)
   }, [])
 
-  function addReview(review) {
-    BubbleTeaApi
-      .createReview(id, review)
-      .then(res => {
-        setReviews([res.data, ...reviews])
-        })
+  async function addReview(review) {
+    try {
+      const res = await BubbleTeaApi.createReview(id, review)
+      console.log({res})
+      const newReview = res.data;
+      console.log({1:newReview})
+
+      setReviews([ newReview, ...reviews ])
+    } catch(error) {
+      console.error("Error adding review:", error);
+    }
   }
+        
 
   async function deleteReview(id, reviewId){
     try {
@@ -59,29 +65,39 @@ export default function MenuItemDetail() {
 
   return menuItem ? (
     <div className="menuItem-detail">
-      <h2>{menuItem.title}</h2>
-      <img src={menuItem.img_url} alt={menuItem.title} />
-      <p>Detail: {menuItem.detail}</p>
-      <p>Total Score: {totalScore}</p>
-      <h3>Reviews</h3>
-      <NewReviewForm 
-        onAdd={addReview}
-        menuItemId={id}/>
-      {/* Add a component for displaying reviews */}
-      {/* Add a form for adding a new review */}
+      <div className="top-content">
+        <h2>{menuItem.title}</h2>
+        <p>Total Score: {totalScore}</p>
+      </div>
+      <div className="pic-box">
+        <img src={menuItem.img_url} alt={menuItem.title} />
+      </div>
+      
+      <div className="detail-content">
+        <h3>{menuItem.detail}</h3>
+        <h4>Energy: {menuItem.calories} KJ</h4>
+      </div>
+      <div className="review-section">
+        <h3>Reviews</h3>
+        <NewReviewForm 
+          onAdd={addReview}
+          menuItemId={id}/>
+        {/* Add a component for displaying reviews */}
+        {/* Add a form for adding a new review */}
 
-      <ul className="review-container">
-        {reviews.map((review) => 
-        <Review 
-        key={review._id}
-        onDelete={deleteReview}
-        onUpdate={updateReview}
-        menuItemId={id}
-        review={review}
-        />
-        )}
-      </ul>
-
+        <ul className="review-container">
+          {reviews.map((review) => 
+          <Review 
+          key={review._id}
+          onDelete={deleteReview}
+          onUpdate={updateReview}
+          menuItemId={id}
+          review={review}
+          user={user}
+          />
+          )}
+        </ul>
+      </div>
     </div>
   ) : (<p>Loading....</p>)
 }

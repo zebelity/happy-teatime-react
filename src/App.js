@@ -11,30 +11,31 @@ function App() {
   const [user, setUser] = useState(getUser())
   
   function login(user) {
-    console.log(user)
+    //console.log({user})
     setUser(user)
+    window.location = '/'
   }
 
   function logout() {
     localStorage.removeItem('token')
     setUser(null)
+    window.location = '/'
   }
 
 
   return (
     <div className="App">
       <nav>
-        {user ? 
-          <>
-          <Link to="/">Home</Link>
-          <span>Logged in as {user.email}</span>
-          <button onClick={logout} >Logout</button>
-          </> : 
-          <>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link> 
-          </>
-        }
+        <div className='nav-links'>
+          <Link className="nav-link" to="/">Home</Link>
+          {user ? 
+            <div className="user-info">
+              <span className='user-email'>Logged in as {user.username}</span>
+              <button className='logout-btn' onClick={logout} >Logout</button>
+            </div> : 
+            <Link className="nav-link" to="/login">Login</Link> 
+          }
+        </div>
       </nav>
 
       <header>
@@ -44,7 +45,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Homepage />}/>
-        <Route path="/menuItems/:id" element={<MenuItemDetail />}/>
+        <Route path="/menuItems/:id" element={<MenuItemDetail user={user} />}/>
         <Route path="/login" element={<LoginPage onLogin={login} />} />
       </Routes>
       

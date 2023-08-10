@@ -13,7 +13,9 @@ export default function MenuItem({ menuItem }) {
 
 
   const handleItemClick = () => {
-    window.location = `/menuItems/${menuItem._id}`
+    const token = localStorage.getItem("token")
+    token ? window.location = `/menuItems/${menuItem._id}` :
+    window.location = `/login`
   };
   
   return (
@@ -29,7 +31,9 @@ export default function MenuItem({ menuItem }) {
         
         <h3>{title}</h3>
       </div>
-      {showDetail && <MenuItemDetail menuItem={menuItem} />}
+      <div className="body-detail" >
+        {showDetail && <MenuItemDetail menuItem={menuItem} />}
+      </div>
     </div>
   )
 }
