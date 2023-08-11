@@ -26,7 +26,7 @@ export default function MenuItemDetail({ user }) {
     try {
       const res = await BubbleTeaApi.createReview(id, review)
       const newReview = res.data;
-      console.log({newReview})
+      //console.log({newReview})
       newReview.userId = user
       setReviews([ newReview, ...reviews ])
     } catch(error) {
@@ -65,7 +65,7 @@ export default function MenuItemDetail({ user }) {
         <div className="top-content">
           <h2>{menuItem.title}</h2>
         </div>
-        <div className="pic-box">
+        <div className="pic-box2">
           <img src={menuItem.img_url} alt={menuItem.title} />
           <p>Score {totalScore}</p>
         </div>

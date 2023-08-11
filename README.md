@@ -2,6 +2,10 @@
 
 Welcome to Happy TeaTime, a web application for exploring and reviewing different bubble tea menu items.
 
+## Demo-user
+email: sei65@ga.co
+password: pudding
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -12,9 +16,18 @@ Welcome to Happy TeaTime, a web application for exploring and reviewing differen
 
 ## Introduction
 
-Happy TeaTime is a React-based web application that allows users to browse, review, and interact with various bubble tea menu items. Users can view detailed information about each menu item, submit their own reviews, and edit or delete their own reviews. The app provides a seamless user experience with real-time updates, allowing users to see their reviews instantly without the need for page refreshes.
+Happy TeaTime is a React-based web application that allows users to browse, like, review, and interact with various bubble tea menu items. Users can view detailed information about each menu item, submit their own reviews, and edit or delete their own reviews. The app provides a seamless user experience with real-time updates, allowing users to see their reviews instantly without the need for page refreshes.
 
 ## Features
+
+### Homepage
+<img width="1328" alt="image" src="/public/homepage.png">
+
+### Login Page
+<img width="1328" alt="image" src="/public/login_page.png">
+
+### MenuItem and reviews page
+<img width="1328" alt="image" src="/public/menuItem_review.png">
 
 - Browse the list of bubble tea menu items on the homepage.
 - Click on a menu item to view its details and average score of each menu.
@@ -38,6 +51,8 @@ Happy TeaTime is a React-based web application that allows users to browse, revi
 
 * Signup Page: The app includes a signup page where new users can create an account to start reviewing their favorite bubble tea menu items.
 * Homepage show Top 3 Highest Scores along with their scores. This provides a quick overview of the most popular choices among users.
+* Like favorite function can work as a global function.
+* Search by brand or name of menu from homepage search bar
 
 
 Enjoy your bubble tea adventures with Happy TeaTime!

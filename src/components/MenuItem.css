@@ -44,7 +44,17 @@
   transition: background-color 0.3s;
 }
 
-.pic-box > img{
+.pic-box1 {
+  text-align: center;
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: 30px;
+}
+
+.pic-box1 > img {
   display: block;
   width: 100%;
   height: auto;

@@ -11,7 +11,6 @@ function App() {
   const [user, setUser] = useState(getUser())
   
   function login(user) {
-    //console.log({user})
     setUser(user)
     window.location = '/'
   }
